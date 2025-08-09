@@ -1,1 +1,1 @@
-# nextplay-ai-gaming-platform
+# NextPlay is an AI-powered gaming platform that combines a digital game store and a community forum. It offers personalized game recommendations, intelligent search, and 24/7 AI chatbot support. Built with Spring Boot, JPA, and modern web technologies, NextPlay aims to deliver an all-in-one hub for gamers to buy, discuss, and explore games. 🎮
