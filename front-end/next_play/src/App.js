@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css'; // hoặc './App.css' nếu bạn để Tailwind ở đó
 import HomePage from './page/homePage'; // Nếu có trang chủ
 import NextplayWebsite from './page/homePage';
-import LoginPage from './page/auth/loginPage'; // Trang đăng nhập
+import LoginPage from './component/auth/loginPage'; // Trang đăng nhập
 import MainLayout from "./layout/MainLayout";
-import ListGamePage from './page/game/listGamePage';
+import ListGamePage from './component/store/listGamePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

@@ -60,6 +60,7 @@ body, html {
 }
 .homepage-navbar-link:hover {
   color: #9810FA;
+  
 }
 .homepage-navbar-search input {
   margin-left: 40px;
@@ -252,8 +253,8 @@ body, html {
   border-radius: 13px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   border: 1px solid rgba(0,0,0,0.10);
-  width: 425px;
-  min-height: 307px;
+  width: 395px;
+  min-height: 280px;
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s, border 0.2s;
@@ -370,7 +371,7 @@ body, html {
   font-size: 1.1rem;
   margin-bottom: 24px;
 }
-.btn-createpost {
+.btn-viewallpost {
   background: #030213;
   color: #fff;
   border: none;
@@ -381,7 +382,7 @@ body, html {
   cursor: pointer;
   transition: background 0.2s;
 }
-.btn-createpost:hover {
+.btn-viewallpost:hover {
   background: #59168B;
 }
 .homepage-forum-list {

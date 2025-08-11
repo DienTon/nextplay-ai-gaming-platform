@@ -34,7 +34,7 @@ function HomePage() {
             <button className="btn-details">View Details</button>
           </div>
           <div className="homepage-hero-img">
-            <img src="https://placehold.co/644x280" alt="Cyberpunk Adventures" />
+            <img src="https://images.gog-statics.com/c75e674590b8947542c809924df30bbef2190341163dd08668e243c266be70c5.jpg" alt="Cyberpunk Adventures" />
             <div className="homepage-hero-img-gradient" />
           </div>
         </section>
@@ -88,7 +88,7 @@ function HomePage() {
         <section className="homepage-forum">
           <div className="homepage-section-header">
             <h2>Community Forum</h2>
-            <button className="btn-createpost">Create New Post</button>
+            <button className="btn-viewallpost">View All</button>
           </div>
           <p className="homepage-forum-desc">
             Connect with fellow gamers and discuss your favorite games

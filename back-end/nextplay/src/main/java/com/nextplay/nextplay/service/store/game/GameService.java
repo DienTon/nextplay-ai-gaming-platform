@@ -6,11 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.nextplay.nextplay.model.game_store.Game;
+import com.nextplay.nextplay.repository.store.IGameRepo;
 
 @Service
 public class GameService implements IGameService {
     @Autowired
-    private IGameService gameRepo;
+    private IGameRepo gameRepo;
 
     @Override
     public Page<Game> findBy(Pageable pageable) {

@@ -3,6 +3,14 @@ body, .min-h-screen {
   background: linear-gradient(135deg, #18181b 0%, #23272f 100%);
   color: #fff;
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI Symbol', 'Inter', Arial, sans-serif;
+  background: #fff;
+  color: #0A0A0A;
+}
+
 
 /* Game Card */
 .group.relative.bg-gray-900 {

@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping,faUser } from '@fortawesome/free-solid-svg-icons';
 
+
 const Navbar = () => {
   return (
     <>
     <div style={{width: 1920, height: 53.50, position: 'relative', background: 'white', borderBottom: '1px rgba(0, 0, 0, 0.10) solid'}}>
-  <div style={{width: 28, height: 28, left: 302, top: 12.25, position: 'absolute', background: 'linear-gradient(135deg, #2B7FFF 0%, #9810FA 100%)', borderRadius: 8.75}}>
+      <Link to='/'>
+        <div style={{width: 28, height: 28, left: 302, top: 12.25, position: 'absolute', background: 'linear-gradient(135deg, #2B7FFF 0%, #9810FA 100%)', borderRadius: 8.75}}>
     <div style={{width: 17.34, height: 14, left: 5.48, top: 5.25, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12.30, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 17.50, wordWrap: 'break-word'}}>NP</div>
   </div>
   <div style={{width: 72.73, height: 21, left: 337, top: 14, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 17.50, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 24.50, wordWrap: 'break-word'}}>Nextplay</div>
+      </Link>
   <div style={{width: 223.47, height: 21, left: 568.66, top: 15.75, position: 'absolute'}}>
-    <div style={{width: 33.45, height: 17, left: 0, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Store</div>
+    <Link to='/games/list'><div style={{width: 33.45, height: 17, left: 0, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Store</div></Link>
     <div style={{width: 40.49, height: 17, left: 54.11, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Forum</div>
     <div style={{width: 52.65, height: 17, left: 115.29, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Reviews</div>
     <div style={{width: 35.15, height: 17, left: 188.65, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>News</div>
