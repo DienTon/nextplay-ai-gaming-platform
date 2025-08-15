@@ -1,9 +1,11 @@
-package com.nextplay.nextplay.controller.forum;
+package com.nextplay.nextplay.controller.store;
+import com.nextplay.nextplay.dto.GameDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,13 +14,13 @@ import com.nextplay.nextplay.service.store.game.GameService;
 
 
 @RestController
-@RequestMapping("/api/page")
+@RequestMapping("/api/page/games")
 @CrossOrigin(origins = "http://localhost:3001/", allowedHeaders = "*")
 public class GameController {
     @Autowired
     private GameService gameService;
 
-    @GetMapping("/games/list")
+    @GetMapping("/")
      public ResponseEntity<Page<Game>> getListGames(
             @RequestParam(name = "page",defaultValue = "0") int page,
             @RequestParam(name = "size",defaultValue = "5") int size,
@@ -29,5 +31,11 @@ public class GameController {
 
         Page<Game> games = gameService.findBy(pageable);
         return ResponseEntity.ok(games);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<Void> addNewGame(@RequestBody GameDto dto){
+        gameService.addNewGame(dto);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

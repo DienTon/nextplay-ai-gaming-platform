@@ -1,10 +1,15 @@
 package com.nextplay.nextplay.model.game_store;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "games")
@@ -19,11 +24,11 @@ public class Game {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    @Column()
+    private Double price;
 
-    @Column(length = 50)
-    private String genre;
+    @OneToMany(mappedBy = "game",fetch = FetchType.EAGER)
+    private Set<GameGenre> gameGenres = new HashSet<>();
 
     @Column(name = "release_date")
     private LocalDate releaseDate;
@@ -39,6 +44,17 @@ public class Game {
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cart> cartItems = new ArrayList<>();
+
+    public Game() {
+    }
+
+    public Game(String title, String description, Double price, LocalDate releaseDate, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.releaseDate = releaseDate;
+        this.imageUrl = imageUrl;
+    }
 
     // Getters and setters
     public Long getId() {
@@ -65,21 +81,22 @@ public class Game {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getGenre() {
-        return genre;
+    public Set<GameGenre> getGameGenres() {
+        return gameGenres;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGameGenres(Set<GameGenre> gameGenres) {
+        this.gameGenres = gameGenres;
     }
+
 
     public LocalDate getReleaseDate() {
         return releaseDate;

@@ -1,166 +1,213 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartShopping,
+  faGamepad,
+  faDesktop,
+  faMobileAlt,
+  faHeadset,
+  faComments,
+} from "@fortawesome/free-solid-svg-icons";
 import "../css/home/homePageStyle.css";
-
+import { Link } from "react-router-dom";
 
 function HomePage() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal-on-scroll");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("revealed");
+        });
+      },
+      { threshold: 0.15 }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="homepage-root">
-        {/* Navbar */}
+    <div style={{ background: "#0f172a", color: "#fff" }} className="homepage-root">
       
-      {/* Main Container */}
-      <div className="homepage-main">
-        {/* Hero Section */}
-        <section className="homepage-hero">
-          <div className="homepage-featured-badge">Featured Game</div>
-          <h1 className="homepage-title">Cyberpunk Adventures</h1>
-          <p className="homepage-desc">
-            Immerse yourself in a dystopian future where<br />
-            technology and humanity collide. Experience the<br />
-            ultimate RPG adventure.
+      {/* HERO */}
+      <section className="hero-section d-flex align-items-center position-relative" style={{ minHeight: "80vh" }}>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1611605691419-d5a0d9c0a9e3?fit=crop&w=1600&q=80') center/cover no-repeat",
+            zIndex: 0,
+          }}
+        ></div>
+        <div className="container position-relative" style={{ zIndex: 1 }}>
+          <span
+            className="badge badge-featured"
+            style={{
+              border: "1px solid #0dcaf0",
+              color: "#0dcaf0",
+              padding: "0.25rem 0.5rem",
+              fontWeight: "bold",
+            }}
+          >
+            FEATURED
+          </span>
+          <h1
+            className="display-4 fw-bold mt-3 mb-2"
+            style={{ color: "#0dcaf0", textShadow: "0 0 10px #0dcaf0" }}
+          >
+            Don’t Just Play. <span style={{ color: "#fff" }}>NextPlay.</span>
+          </h1>
+          <p style={{ color: "#cbd5e1", fontSize: "1.2rem", marginBottom: "2rem" }}>
+            Cửa hàng game hiện đại cùng cộng đồng thảo luận sôi động...
           </p>
-          <div className="homepage-rating">
-            <span className="star filled" />
-            <span className="star filled" />
-            <span className="star filled" />
-            <span className="star filled" />
-            <span className="star" />
-            <span className="homepage-rating-text">4.2 (1,247 reviews)</span>
+          <div className="d-flex gap-3 flex-wrap">
+            <a
+              href="#store"
+              className="btn"
+              style={{
+                backgroundColor: "#0dcaf0",
+                color: "#0f172a",
+                fontWeight: "bold",
+                padding: "0.5rem 1.5rem",
+                borderRadius: "8px",
+                transition: "0.3s",
+              }}
+            >
+              Shop Now
+            </a>
+            <a
+              href="#forum"
+              className="btn"
+              style={{
+                border: "2px solid #0dcaf0",
+                color: "#0dcaf0",
+                background: "transparent",
+                fontWeight: "bold",
+                padding: "0.5rem 1.5rem",
+                borderRadius: "8px",
+                transition: "0.3s",
+              }}
+            >
+              Join the Forum
+            </a>
           </div>
-          <div className="homepage-actions">
-            <button className="btn-play">
-              <span className="icon-play" />
-              Play Now - $39.99
+        </div>
+      </section>
+
+      {/* CATEGORIES */}
+      <section id="store" className="py-5">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="fw-bold m-0" style={{ color: "#0dcaf0" }}>Explore Categories</h2>
+            <a className="btn" style={{ color: "#0dcaf0", border: "1px solid #0dcaf0" }} href="#all">View all</a>
+          </div>
+          <div className="row g-4">
+            {[
+              { icon: faDesktop, title: "PC Games" },
+              { icon: faGamepad, title: "Console Games" },
+              { icon: faMobileAlt, title: "Mobile Games" },
+              { icon: faHeadset, title: "Accessories" },
+            ].map((c, i) => (
+              <div className="col-12 col-sm-6 col-lg-3" key={i}>
+                <div
+                  className="card category-card reveal-on-scroll"
+                  style={{
+                    background: "#1e293b",
+                    border: "1px solid #0dcaf0",
+                    borderRadius: "12px",
+                    transition: "0.3s",
+                  }}
+                >
+                  <div className="card-body d-flex align-items-center">
+                    <div className="icon-wrap me-3" style={{ fontSize: "1.5rem", color: "#0dcaf0" }}>
+                      <FontAwesomeIcon icon={c.icon} />
+                    </div>
+                    <div>
+                      <h5 className="mb-1">{c.title}</h5>
+                      <small style={{ color: "#94a3b8" }}>Discover more</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DEALS CAROUSEL */}
+      <section className="py-5">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="fw-bold m-0" style={{ color: "#0dcaf0" }}>Special Deals</h2>
+            <span style={{ color: "#94a3b8" }}>Limited time offers</span>
+          </div>
+
+          <div id="dealCarousel" className="carousel slide reveal-on-scroll" data-bs-ride="carousel">
+            <div className="carousel-inner rounded-4 shadow">
+              {[
+                "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1486578077620-8a022ddd481f?q=80&w=1400&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1585079542156-2755d9c8affd?q=80&w=1400&auto=format&fit=crop",
+              ].map((src, idx) => (
+                <div className={`carousel-item ${idx === 0 ? "active" : ""}`} key={idx}>
+                  <img src={src} className="d-block w-100" alt={`deal-${idx}`} style={{ borderRadius: "12px" }} />
+                  <div className="carousel-caption d-none d-md-block text-start">
+                    <span className="badge bg-danger">-50%</span>
+                    <h5 className="mt-2">Hot Bundle #{idx + 1}</h5>
+                    <p>Nhận ưu đãi hấp dẫn cho tựa game yêu thích.</p>
+                    <a href="#buy" className="btn" style={{ background: "#0dcaf0", color: "#0f172a", borderRadius: "8px" }}>Get Deal</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className="carousel-control-prev" type="button" data-bs-target="#dealCarousel" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
             </button>
-            <button className="btn-details">View Details</button>
+            <button className="carousel-control-next" type="button" data-bs-target="#dealCarousel" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
-          <div className="homepage-hero-img" style={{maxWidth:400,maxHeight:300}}>
-            <img src="https://images.gog-statics.com/c75e674590b8947542c809924df30bbef2190341163dd08668e243c266be70c5.jpg" alt="Cyberpunk Adventures" />
-            <div className="homepage-hero-img-gradient" />
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Game Store Section */}
-        <section className="homepage-store">
-          <div className="homepage-section-header">
-            <h2>Game Store</h2>
-            <button className="btn-viewall">View All Games</button>
+      {/* FORUM */}
+      <section id="forum" className="py-5">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="fw-bold m-0" style={{ color: "#0dcaf0" }}>Community Forum</h2>
+            <a className="btn" style={{ border: "1px solid #0dcaf0", color: "#0dcaf0" }} href="#join">Join the Conversation</a>
           </div>
-          <div className="homepage-category-list">
-            <button className="category active">All Games</button>
-            <button className="category">Action</button>
-            <button className="category">Adventure</button>
-            <button className="category">RPG</button>
-            <button className="category">Strategy</button>
-            <button className="category">Simulation</button>
-            <button className="category">Sports</button>
-            <button className="category">Racing</button>
-          </div>
-          <div className="homepage-game-list">
-            {/* Game Card Example */}
-            <div className="game-card">
-              <div className="game-card-img">
-                <img src="https://placehold.co/423x168" alt="Galactic War" />
-                <div className="game-card-discount">-25%</div>
-                <div className="game-card-genre">Action</div>
-              </div>
-              <div className="game-card-content">
-                <div className="game-card-title">Galactic War</div>
-                <div className="game-card-rating">
-                  <span className="star filled" />
-                  <span className="star filled" />
-                  <span className="star filled" />
-                  <span className="star filled" />
-                  <span className="star" />
-                  <span className="game-card-rating-count">(892)</span>
+          <div className="row g-4 " >
+            {[
+              { title: "Hỏi đáp cấu hình chơi mượt FPS 120+", excerpt: "Mọi người tư vấn giúp build PC tầm trung…", replies: 42 },
+              { title: "Chia sẻ mod hay cho game sandbox", excerpt: "Bộ mod đồ họa này làm game khác bọt hẳn…", replies: 31 },
+              { title: "Review nhanh bản cập nhật mới", excerpt: "Meta thay đổi khá mạnh ở late game…", replies: 19 },
+            ].map((t, i) => (
+              <div className="col-12" key={i}>
+                <div className="card forum-card reveal-on-scroll" style={{ background: "#1e293b", border: "1px solid #0dcaf0", borderRadius: "12px" }}>
+                  <div className="card-body d-flex align-items-center">
+                    <div style={{ fontSize: "1.5rem", color: "#0dcaf0", marginRight: "1rem" }}>
+                      <FontAwesomeIcon icon={faComments} />
+                    </div>
+                    <div className="flex-grow-1">
+                      <h5>{t.title}</h5>
+                      <p style={{ color: "#94a3b8", marginBottom: "0.5rem" }}>{t.excerpt}</p>
+                      <small style={{ color: "#94a3b8" }}>{t.replies} replies • 5m ago</small>
+                    </div>
+                    <a className="btn" style={{ border: "1px solid #0dcaf0", color: "#0dcaf0", borderRadius: "8px" }} href="#read">Read</a>
+                  </div>
                 </div>
-                <div className="game-card-price">
-                  <span className="current">$29.99</span>
-                  <span className="old">$39.99</span>
-                </div>
-                <button className="btn-addcart">Add to Cart</button>
               </div>
-            </div>
-            {/* ...Repeat for other games... */}
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Community Forum Section */}
-        <section className="homepage-forum">
-          <div className="homepage-section-header">
-            <h2>Community Forum</h2>
-            <button className="btn-viewallpost">View All</button>
-          </div>
-          <p className="homepage-forum-desc">
-            Connect with fellow gamers and discuss your favorite games
-          </p>
-          <div className="homepage-forum-list">
-            {/* Forum Card Example */}
-            <div className="forum-card">
-              <div className="forum-card-icon">💬</div>
-              <div className="forum-card-content">
-                <div className="forum-card-title">General Discussion</div>
-                <div className="forum-card-desc">Talk about anything gaming related</div>
-                <div className="forum-card-stats">
-                  <span>1234 topics</span>
-                  <span>8765 posts</span>
-                </div>
-                <div className="forum-card-latest">
-                  <div className="forum-card-latest-title">What's your favorite game of 2024?</div>
-                  <div className="forum-card-latest-meta">by GamerPro • 2 hours ago</div>
-                </div>
-              </div>
-            </div>
-            {/* ...Repeat for other forum categories... */}
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="homepage-footer">
-          <div className="footer-brand">
-            <div className="footer-logo">NP</div>
-            <div className="footer-title">Nextplay</div>
-            <div className="footer-desc">
-              Your ultimate destination for gaming. Discover, play, and connect with gamers worldwide.
-            </div>
-          </div>
-          <div className="footer-links">
-            <div>
-              <div className="footer-link-title">Store</div>
-              <ul>
-                <li>Browse Games</li>
-                <li>New Releases</li>
-                <li>Top Sellers</li>
-                <li>Free Games</li>
-                <li>Wishlist</li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-link-title">Community</div>
-              <ul>
-                <li>Forum</li>
-                <li>Discord</li>
-                <li>Reddit</li>
-                <li>Events</li>
-                <li>Tournaments</li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-link-title">Stay Updated</div>
-              <div className="footer-newsletter">
-                <input type="email" placeholder="Enter your email" />
-                <button>Subscribe</button>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-            <span>Cookie Policy</span>
-            <span>Support</span>
-            <span>© 2024 Nextplay. All rights reserved.</span>
-          </div>
-        </footer>
-      </div>
+      
     </div>
   );
 }

@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getAllGames = async (page = 0, size = 5) => {
   try {
-    const res = await axios.get(`http://localhost:8080/api/page/games/list`, {
+    const res = await axios.get(`http://localhost:8080/api/page/games/`, {
         params: {
           page,
           size,

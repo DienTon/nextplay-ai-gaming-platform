@@ -1,48 +1,128 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping,faUser } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
+import DropdownSidebar from "../layout/sidebar";
+import "../css/home/homePageStyle.css";
 
 const Navbar = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([
+    { id: 1, title: "Cyberpunk 2077", price: "$29.99" },
+    { id: 2, title: "Elden Ring", price: "$59.99" },
+  ]);
+
+  const toggleCart = () => setCartOpen(!cartOpen);
+
+  const removeItem = (id) => {
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  };
+
   return (
-    <>
-    <div style={{width: 1920, height: 53.50, position: 'relative', background: 'white', borderBottom: '1px rgba(0, 0, 0, 0.10) solid'}}>
-      <Link to='/'>
-        <div style={{width: 28, height: 28, left: 302, top: 12.25, position: 'absolute', background: 'linear-gradient(135deg, #2B7FFF 0%, #9810FA 100%)', borderRadius: 8.75}}>
-    <div style={{width: 17.34, height: 14, left: 5.48, top: 5.25, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12.30, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 17.50, wordWrap: 'break-word'}}>NP</div>
-  </div>
-  <div style={{width: 72.73, height: 21, left: 337, top: 14, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 17.50, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 24.50, wordWrap: 'break-word'}}>Nextplay</div>
-      </Link>
-  <div style={{width: 223.47, height: 21, left: 568.66, top: 15.75, position: 'absolute'}}>
-    <Link to='/games/list'><div style={{width: 33.45, height: 17, left: 0, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Store</div></Link>
-    <div style={{width: 40.49, height: 17, left: 54.11, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Forum</div>
-    <div style={{width: 52.65, height: 17, left: 115.29, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>Reviews</div>
-    <div style={{width: 35.15, height: 17, left: 188.65, top: 0, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0A0A0A', fontSize: 14, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 21, wordWrap: 'break-word'}}>News</div>
-  </div>
-  <div style={{width: 392, height: 31.50, left: 972.31, top: 10.50, position: 'absolute', background: '#F3F3F5', overflow: 'hidden', borderRadius: 6.75}}>
-    <div style={{width: 344.50, height: 14, left: 36, top: 8.75, position: 'absolute', overflow: 'hidden'}}>
-      <div style={{width: 158.95, height: 12, left: 0, top: 1, position: 'absolute', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#717182', fontSize: 12.30, fontFamily: 'Segoe UI Symbol', fontWeight: '400', wordWrap: 'break-word'}}>Search games, discussions...</div>
-    </div>
-    <div style={{width: 344.50, height: 14, left: 36, top: 8.75, position: 'absolute'}} />
-  </div>
-  <div style={{width: 14, height: 14, left: 982.81, top: 19.25, position: 'absolute'}}>
-    <div style={{width: 2.53, height: 2.53, left: 9.72, top: 9.72, position: 'absolute', outline: '1.17px #717182 solid', outlineOffset: '-0.58px'}} />
-    <div style={{width: 9.33, height: 9.33, left: 1.75, top: 1.75, position: 'absolute', outline: '1.17px #717182 solid', outlineOffset: '-0.58px'}} />
-  </div>
-  <div style={{width: 14, height: 14, left: 1595.25, top: 19.25, position: 'absolute'}}>
-    <FontAwesomeIcon icon={faUser} />
-  </div>
-  <div style={{width: 31.50, height: 28, left: 1544.50, top: 12.25, position: 'absolute', borderRadius: 6.75}}>
-    <div style={{width: 14, height: 14, left: 8.75, top: 7, position: 'absolute'}}>
-        <FontAwesomeIcon icon={faCartShopping} />
-    </div>
-    <div style={{width: 17.50, height: 17.50, left: 21, top: -7, position: 'absolute', background: '#030213', overflow: 'hidden', borderRadius: 6.75}}>
-      <div style={{width: 6.04, height: 11, left: 5.83, top: 2.75, position: 'absolute', textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 10.50, fontFamily: 'Segoe UI Symbol', fontWeight: '400', lineHeight: 14, wordWrap: 'break-word'}}>2</div>
-    </div>
-  </div>
-</div>
-    </>
+    <nav
+      className="navbar navbar-expand-lg sticky-top shadow-sm"
+      style={{ background: "linear-gradient(90deg, #1e293b, #0e1528ff)" }}
+    >
+      <div className="container d-flex align-items-center">
+        {/* Logo */}
+        <Link to="/" className="navbar-brand d-flex align-items-center">
+          <span className="np-logo me-2">NP</span>
+          <span className="fw-semibold text-white">Nextplay</span>
+        </Link>
+
+        {/* Links */}
+        <div className="collapse navbar-collapse" id="mainNav">
+          <ul className="navbar-nav ms-3">
+            <li className="nav-item">
+              <Link to="/games/list" className="nav-link text-white">
+                Store
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-white" href="#forum">
+                Forum
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Search desktop */}
+        <form className="d-none d-lg-flex ms-3 me-3">
+          <input
+            className="form-control bg-light border-0 rounded-3 px-3"
+            type="search"
+            placeholder="Search games..."
+            style={{ width: 250 }}
+          />
+        </form>
+
+        {/* Cart dropdown */}
+        <div className="position-relative">
+          <button
+            className="btn position-relative "
+            onClick={toggleCart}
+            style={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "8px",
+              background: "linear-gradient(180deg, #0f172a, #253449ff)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#fff",
+            }}
+          >
+            <FontAwesomeIcon icon={faCartShopping} />
+            {cartItems.length > 0 && (
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                {cartItems.length}
+              </span>
+            )}
+          </button>
+
+          {cartOpen && (
+            <div
+              className="dropdown-menu dropdown-menu-end show p-3"
+              style={{
+                minWidth: "250px",
+                right: 0,
+                borderRadius: "8px",
+                background: "linear-gradient(180deg, #0f172a, #293a54ff)",
+                borderRadius: "8px",
+              }}
+            >
+              {cartItems.length === 0 ? (
+                <p className="text-white mb-0">Your cart is empty</p>
+              ) : (
+                cartItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="d-flex justify-content-between align-items-center mb-2 "
+                  >
+                    <div className="text-white">{item.title}</div>
+                    <div className="d-flex align-items-center " >
+                      <span className="text-info me-2">{item.price}</span>
+                      <button
+                        className="btn btn-sm btn-danger"
+                        onClick={() => removeItem(item.id)}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+              <div className="mt-2">
+                <Link to="/cart" className="btn btn-primary w-100">
+                  Go to Checkout
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+           <DropdownSidebar />
+      </div>
+    </nav>
   );
 };
 

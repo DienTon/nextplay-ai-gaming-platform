@@ -1,91 +1,195 @@
-import React, { useState,useEffect } from 'react';
-import { Button, Card } from "react-bootstrap";
-import '../../css/home/homePageStyle.css';
-import * as gameService from '../../service/store/gameService';
+import React, { useState, useEffect } from "react";
+import "../../css/home/homePageStyle.css";
+import * as gameService from "../../service/store/gameService";
+import GameModal from "../../layout/gameModal";
 
-function ListGamePage(props) {
-  const [games, setGames] = React.useState([]);
-  const [pageSize, setPageSize] = React.useState(5);
-  const [currentPage, setCurrentPage] = React.useState(0);
-  
-    useEffect(() => {
-      getAllGames();
-    }, []);
-  
-    const getAllGames = async () => {
-      try {
-        const response = await gameService.getAllGames(currentPage, pageSize);
-        if (response.content && Array.isArray(response.content)) {
-          console.log(response.data);
-          setGames(response.content);
-        } else {
-          console.error("Invalid response format", response.content);
-        }
-      } catch (error) {
-        console.error("Error fetching blog list", error);
+function ListGamePage() {
+  const [games, setGames] = useState([]);
+  const [pageSize, setPageSize] = useState(8);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [category, setCategory] = useState("All");
+  const [showModal, setShowModal] = useState(false);
+  const [selectedGame, setSelectedGame] = useState(null);
+
+  useEffect(() => {
+    getAllGames();
+  }, []);
+
+  const getAllGames = async () => {
+    try {
+      const response = await gameService.getAllGames(currentPage, pageSize);
+      if (response.content && Array.isArray(response.content)) {
+        setGames(response.content);
+      } else {
+        console.error("Invalid response format", response.content);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching game list", error);
+    }
+  };
+  const openModal = (game) => {
+    setSelectedGame(game);
+    setShowModal(true);
+  };
+
+  const categories = [
+    "All",
+    "Action",
+    "Adventure",
+    "RPG",
+    "Strategy",
+    "Simulation",
+    "Sports",
+    "Racing",
+  ];
+  const filteredGames =
+    category === "All" ? games : games.filter((g) => g.genre === category);
+
   return (
-    <>
-    <br></br>
-       {/* Game Store Section */}
-       <div className="row">
-        <div className="col-md-2">
-          </div>
-        <div className="col-md-8">
-         <section className="">
-          <div className="homepage-section-header">
-            <h2>Game Store</h2>
-          </div>
-          <div className="homepage-category-list">
-            <button className="category active">All Games</button>
-            <button className="category">Action</button>
-            <button className="category">Adventure</button>
-            <button className="category">RPG</button>
-            <button className="category">Strategy</button>
-            <button className="category">Simulation</button>
-            <button className="category">Sports</button>
-            <button className="category">Racing</button>
-          </div>
-          <div className="homepage-game-list">
-            {/* Game Card Example */}
-            {games.map((game, index) => (
-              <>
-              <div className="game-card" key={index}>
-              <div className="game-card-img">
-                <img src="https://cdn-media.sforum.vn/storage/app/media/phuonganh/cyberpunk-2077-1.jpg" alt="Galactic War" />
-                <div className="game-card-discount">-25%</div>
-                <div className="game-card-genre">{game.genre}</div>
-              </div>
-              <div className="game-card-content">
-                <div className="game-card-title">{game.title}</div>
-                <div className="game-card-rating">
-                  <span className="star filled" />
-                  <span className="star filled" />
-                  <span className="star filled" />
-                  <span className="star filled" />
-                  <span className="star" />
-                  <span className="game-card-rating-count">(892)</span>
+    <div
+      style={{
+        background: "#0f172a",
+        color: "#fff",
+        minHeight: "100vh",
+        padding: "40px 0",
+      }}
+    >
+      <div className="container">
+        {/* Section Header */}
+        <div className="text-center mb-4">
+          <h2
+            className="fw-bold"
+            style={{
+              borderBottom: "3px solid #0dcaf0",
+              display: "inline-block",
+              paddingBottom: "5px",
+            }}
+          >
+            Game Store
+          </h2>
+        </div>
+
+        {/* Categories */}
+        <div className="d-flex flex-wrap justify-content-center mb-4">
+          {categories.map((c, idx) => (
+            <button
+              key={idx}
+              className={`btn m-1 ${
+                category === c ? "text-dark" : "btn-outline-light"
+              }`}
+              style={{
+                background: category === c ? "#0dcaf0" : "transparent",
+                borderColor: "#0dcaf0",
+                transition: "0.3s",
+              }}
+              onClick={() => setCategory(c)}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+
+        {/* Game Grid */}
+        <div className="row g-4" >
+          {filteredGames.map((game, idx) => (
+            <div className="col-12 col-sm-6 col-lg-3" key={idx} onClick={() => openModal(game)}>
+              <div
+                className="game-card"
+                style={{
+                  background: "#1e293b",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  transition: "transform 0.3s, box-shadow 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                  e.currentTarget.style.boxShadow = "0 0 20px #0dcaf0";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                {/* Game Image */}
+                <div className="game-card-img position-relative">
+                  <img
+                    src={game.imageUrl || "https://via.placeholder.com/300x180"}
+                    alt={game.title}
+                    style={{
+                      width: "100%",
+                      height: "180px",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "10px",
+                      left: "10px",
+                      background: "#0dcaf0",
+                      color: "#000",
+                      padding: "2px 6px",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {game.gameGenres.map((g) => g.genre.name).join(" | ")}
+                  </span>
                 </div>
-                <div className="game-card-price">
-                  <span className="current">{game.price}</span>
-                  <span className="old">$39.99</span>
+
+                {/* Card Content */}
+                <div className="p-3 d-flex flex-column">
+                  <h5 className="fw-bold">{game.title}</h5>
+                  <div className="d-flex mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <span
+                        key={i}
+                        style={{ color: i < 4 ? "#ffc107" : "#6c757d" }}
+                      >
+                        ★
+                      </span>
+                    ))}
+                    <span className="ms-2">(892)</span>
+                  </div>
+                  <p style={{ flexGrow: 1, fontSize: "0.9rem" }}>
+                    {game.description?.substring(0, 60)}...
+                  </p>
+                  <div className="d-flex justify-content-between align-items-center mt-2">
+                    <span className="fw-bold" style={{ color: "#0dcaf0" }}>
+                      {game.price}
+                    </span>
+                    <button
+                      className="btn btn-outline-light btn-sm"
+                      style={{
+                        borderColor: "#0dcaf0",
+                        color: "#0dcaf0",
+                        transition: "0.3s",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#0dcaf0";
+                        e.currentTarget.style.color = "#0f172a";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color = "#0dcaf0";
+                      }}
+                    >
+                      Buy Now
+                    </button>
+                  </div>
                 </div>
-                <button className="btn-addcart">Add to Cart</button>
               </div>
             </div>
-              </>
-            ))}
-           
-            {/* ...Repeat for other games... */}
-          </div>
-        </section>
-        
+          ))}
         </div>
-        <div className="col-md-2">
-        </div>
-       </div>
-    </>
+      </div>
+      <GameModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        game={selectedGame}
+      />
+    </div>
   );
 }
 
