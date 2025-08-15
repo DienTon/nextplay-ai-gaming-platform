@@ -6,6 +6,7 @@ import NextplayWebsite from './page/homePage';
 import LoginPage from './component/auth/loginPage'; // Trang đăng nhập
 import MainLayout from "./layout/MainLayout";
 import ListGamePage from './component/store/listGamePage';
+import AdminPage from './page/adminPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/games" element={<NextplayWebsite />} /> {/* Trang game store + forum */}
         <Route path="/auth/login" element={<LoginPage />} /> {/* Trang đăng nhập */}
         <Route path="/games/list" element={<ListGamePage />} /> {/* Trang danh sách game */}
+        <Route path="/admin" element={<AdminPage />} /> {/* Trang quản trị viên */}
         {/* Thêm các route khác nếu cần */}
       </Routes>
       </MainLayout>

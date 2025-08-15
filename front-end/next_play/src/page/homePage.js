@@ -33,7 +33,7 @@ function HomePage() {
             </button>
             <button className="btn-details">View Details</button>
           </div>
-          <div className="homepage-hero-img">
+          <div className="homepage-hero-img" style={{maxWidth:400,maxHeight:300}}>
             <img src="https://images.gog-statics.com/c75e674590b8947542c809924df30bbef2190341163dd08668e243c266be70c5.jpg" alt="Cyberpunk Adventures" />
             <div className="homepage-hero-img-gradient" />
           </div>

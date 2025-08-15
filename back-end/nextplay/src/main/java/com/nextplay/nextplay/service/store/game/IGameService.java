@@ -9,4 +9,5 @@ import com.nextplay.nextplay.model.game_store.Game;
 @Service
 public interface IGameService {
     Page<Game> findBy(Pageable pageable);
+    
 }
