@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/auth/**", "/oauth2/**").permitAll()
+                        .requestMatchers("/","/api/page/**", "/auth/**", "/oauth2/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 // login bằng form (email/password)

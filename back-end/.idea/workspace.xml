@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ee63ea0d-8a38-409b-8b89-43b04068be8c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/NextplayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/NextplayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/OAuth2SuccessHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/auth/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/GameDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/GameDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/auth/AuthRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/auth/AuthResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/CustomUserDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/GameGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/GameGenre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Genre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/auth/IUserRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameGenreRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameGenreRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGenreRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGenreRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/auth/CustomUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/auth/IUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/auth/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/IGameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/IGameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/test/java/com/nextplay/nextplay/NextplayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/test/java/com/nextplay/nextplay/NextplayApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="31YA6wbfbXFj1ccaflWbF4OiP8k" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee63ea0d-8a38-409b-8b89-43b04068be8c" name="Changes" comment="" />
+      <created>1755690460437</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755690460437</updated>
+      <workItem from="1755690461558" duration="97000" />
+      <workItem from="1755690580811" duration="54000" />
+      <workItem from="1755690666410" duration="198000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
