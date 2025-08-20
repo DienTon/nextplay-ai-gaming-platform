@@ -1,7 +1,6 @@
 package com.nextplay.nextplay.model.game_store;
 
 
-import com.nextplay.nextplay.model.auth.User;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
