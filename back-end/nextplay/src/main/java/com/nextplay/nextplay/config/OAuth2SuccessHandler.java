@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Component
 public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
@@ -50,14 +52,11 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         String token = jwtUtil.generateToken(user.getEmail(), user.getRole().getName());
 
         // Trả token cho client
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(
-                "{ \"token\": \"" + token + "\", " +
-                        "\"email\": \"" + email + "\", " +
-                        "\"role\": \"" + user.getRole().getName() + "\" }"
+        response.sendRedirect(
+                "http://localhost:3000/?token=" + token +
+                        "&email=" + URLEncoder.encode(user.getEmail(), StandardCharsets.UTF_8) +
+                        "&role=" + user.getRole().getName()
         );
-        response.getWriter().flush();
 
 
     }
