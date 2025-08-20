@@ -38,9 +38,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/api/page/**", "/auth/**", "/oauth2/**").permitAll()
+                        .requestMatchers("/", "/auth/**", "/oauth2/**").permitAll()
+                        .requestMatchers("api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/page/**").hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()
                 )
+
                 // login bằng form (email/password)
                 .formLogin(form -> form
                         .loginPage("/auth/login")
@@ -60,6 +63,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -71,5 +75,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 }
 

@@ -33,9 +33,5 @@ public class GameController {
         return ResponseEntity.ok(games);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Void> addNewGame(@RequestBody GameDto dto){
-        gameService.addNewGame(dto);
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
+
 }
