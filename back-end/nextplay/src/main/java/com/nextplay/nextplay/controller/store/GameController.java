@@ -15,7 +15,7 @@ import com.nextplay.nextplay.service.store.game.GameService;
 
 @RestController
 @RequestMapping("/api/page/games")
-@CrossOrigin(origins = "http://localhost:3001/", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "/*")
 public class GameController {
     @Autowired
     private GameService gameService;

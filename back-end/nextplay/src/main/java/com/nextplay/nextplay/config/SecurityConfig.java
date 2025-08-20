@@ -35,13 +35,13 @@ public class SecurityConfig {
                         .loginPage("/auth/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("http://localhost:3000/", true)
                         .permitAll()
                 )
                 // login bằng Google
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/auth/login")
-                        .defaultSuccessUrl("/home", true)
+                        .defaultSuccessUrl("http://localhost:3000/", true)
                 )
                 .logout(logout -> logout.permitAll());
 

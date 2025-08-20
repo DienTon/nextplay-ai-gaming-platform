@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState("");
+  const [Email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get("token");
+  if (token) {
+    console.log("Token received:", token);
+    localStorage.setItem("token", token);
+    navigate("/dashboard");
+  }
+}, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Username:", username);
+    console.log("Username:", Email);
     console.log("Password:", password);
     // TODO: Gọi API đăng nhập
   };
@@ -18,18 +30,18 @@ export default function LoginPage() {
 
   const handleLoginWithGoogle = () => {
     console.log("Đăng nhập với Google");
-    // TODO: Gắn API Google
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Đăng Nhập</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit} style={styles.form} method="POST">
         <input
           type="text"
-          placeholder="Tên đăng nhập"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          value={Email}
+          onChange={(e) => setEmail(e.target.value)}
           style={styles.input}
           required
         />

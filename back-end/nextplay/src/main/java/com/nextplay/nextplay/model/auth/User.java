@@ -53,6 +53,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Report> reports = new ArrayList<>();
 
+
     // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
