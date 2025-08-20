@@ -24,7 +24,7 @@ public class User {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(name = "password_hash", nullable = false, length = 255)
+    @Column(name = "password_hash", length = 255)
     private String passwordHash;
 
     @Column()
@@ -53,6 +53,13 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Report> reports = new ArrayList<>();
 
+    public User(String email,String username){
+        this.role = new Role("USER");
+    }
+
+    public User() {
+
+    }
 
     // Getters and setters
     public Long getId() { return id; }
