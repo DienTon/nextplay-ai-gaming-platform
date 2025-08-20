@@ -12,12 +12,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../css/home/homePageStyle.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function HomePage() {
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
+  const token = params.get("token");
+  const email = params.get("email");
+  const role = params.get("role");
+
+  localStorage.setItem("jwt", token);
+  localStorage.setItem("role", role);
+  localStorage.setItem("email", email);
+  console.log("Token:", token);
+  console.log("Email:", email);
+  console.log("Role:", role);
+   
+  
+  // <div>
+  //   {role === "ADMIN" && <AdminPanel />}
+  //   {role === "USER" && <UserPanel />}
+  // </div>
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-    console.log("Token received:", token);
     const els = document.querySelectorAll(".reveal-on-scroll");
     const observer = new IntersectionObserver(
       (entries) => {
