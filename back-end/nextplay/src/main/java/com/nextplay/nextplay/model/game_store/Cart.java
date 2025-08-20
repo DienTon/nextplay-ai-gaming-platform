@@ -1,5 +1,6 @@
 package com.nextplay.nextplay.model.game_store;
 
+import com.nextplay.nextplay.model.auth.User;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 

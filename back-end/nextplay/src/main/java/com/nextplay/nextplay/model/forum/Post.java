@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.nextplay.nextplay.model.game_store.User;
+import com.nextplay.nextplay.model.auth.User;
 
 
 @Entity

@@ -3,7 +3,7 @@ package com.nextplay.nextplay.model.forum;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-import com.nextplay.nextplay.model.game_store.User;
+import com.nextplay.nextplay.model.auth.User;
 
 @Entity
 @Table(name = "comments")

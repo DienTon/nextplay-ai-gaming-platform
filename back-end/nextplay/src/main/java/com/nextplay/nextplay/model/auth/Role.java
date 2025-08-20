@@ -12,6 +12,12 @@ public class Role {
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 
+    public Role(String role){}
+
+    public Role() {
+
+    }
+
     // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
