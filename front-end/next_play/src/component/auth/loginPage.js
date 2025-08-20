@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { href, useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,11 +19,9 @@ export default function LoginPage() {
     // TODO: Gắn API Facebook
   };
 
-  const handleLoginWithGoogle = () => {
-    console.log("Đăng nhập với Google");
-    // TODO: Gắn API Google
-  };
-
+ const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+};
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Đăng Nhập</h2>
@@ -50,7 +51,7 @@ export default function LoginPage() {
         <button onClick={handleLoginWithFacebook} style={styles.facebook}>
           Đăng nhập với Facebook
         </button>
-        <button onClick={handleLoginWithGoogle} style={styles.google}>
+        <button onClick={handleGoogleLogin} style={styles.google}>
           Đăng nhập với Google
         </button>
       </div>
