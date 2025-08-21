@@ -3,7 +3,9 @@ package com.nextplay.nextplay.controller.auth;
 import com.nextplay.nextplay.config.JwtUtil;
 import com.nextplay.nextplay.dto.auth.AuthRequest;
 import com.nextplay.nextplay.dto.auth.AuthResponse;
+import com.nextplay.nextplay.dto.auth.RegisterRequest;
 import com.nextplay.nextplay.model.auth.CustomUserDetails;
+import com.nextplay.nextplay.service.auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 @CrossOrigin(origins = "http://localhost:3000/", allowedHeaders = "*")
 public class AuthController {
     @Autowired
@@ -26,8 +28,16 @@ public class AuthController {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private AuthService authService;
+
+    @PostMapping("/register")
+    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.register(request));
+    }
+
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest request) {
+    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );

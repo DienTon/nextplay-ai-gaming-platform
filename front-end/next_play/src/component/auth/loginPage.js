@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [Email, setEmail] = useState("");
@@ -69,7 +69,7 @@ export default function LoginPage() {
 
       <div style={styles.links}>
         <a href="/forgot-password">Quên mật khẩu?</a>
-        <a href="/register">Đăng ký tài khoản mới</a>
+        <Link to={"/auth/register"}>Đăng ký tài khoản mới</Link>
       </div>
     </div>
   );
