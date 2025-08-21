@@ -23,7 +23,7 @@ function HomePage() {
   const email = params.get("email");
   const role = params.get("role");
 
-  localStorage.setItem("jwt", token);
+  localStorage.setItem("token", token);
   localStorage.setItem("role", role);
   localStorage.setItem("email", email);
   console.log("Token:", token);
