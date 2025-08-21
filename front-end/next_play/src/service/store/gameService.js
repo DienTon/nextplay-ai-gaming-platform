@@ -4,11 +4,15 @@ import axios from "axios";
 
 export const getAllGames = async (page = 0, size = 5) => {
   try {
+    const token = localStorage.getItem('token');
     const res = await axios.get(`http://localhost:8080/api/page/games/`, {
         params: {
           page,
           size,
-        }
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
     });
     console.log(res);
     return res.data;
