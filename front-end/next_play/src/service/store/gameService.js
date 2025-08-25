@@ -23,9 +23,21 @@ export const getAllGames = async (page = 0, size = 5) => {
 
 export const addNewBlog = async (blog) => {
   try {
-    await axios.post("http://localhost:3001/api/blog/addNewBlog/ ", blog);
-    return true;
-  } catch (error) {
-    return false;
-  }
+      const token = localStorage.getItem('token');
+      const res = await axios.post('http://localhost:8080/api/admin/games', {
+        name,
+        description,
+        genre
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setMessage("Thêm game thành công!");
+      setName("");
+      setDescription("");
+      setGenre("");
+    } catch (error) {
+      setMessage("Lỗi khi thêm game!");
+    }
 };

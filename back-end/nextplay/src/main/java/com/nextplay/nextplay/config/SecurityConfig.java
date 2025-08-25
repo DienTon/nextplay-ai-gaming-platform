@@ -51,13 +51,7 @@ public class SecurityConfig {
             .requestMatchers("/api/admin/**").hasRole("ADMIN")
             .requestMatchers("/api/page/**").hasAnyRole("USER","ADMIN")
         )
-        .formLogin(form -> form
-            .loginPage("/auth/login")
-            .usernameParameter("email")
-            .passwordParameter("password")
-            .defaultSuccessUrl("http://localhost:3000/", true)
-            .permitAll()
-        )
+
         .oauth2Login(oauth2 -> oauth2
             .loginPage("/auth/login")
             .successHandler(oAuth2SuccessHandler)

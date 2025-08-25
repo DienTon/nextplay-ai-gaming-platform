@@ -7,6 +7,7 @@ import com.nextplay.nextplay.dto.auth.RegisterRequest;
 import com.nextplay.nextplay.model.auth.CustomUserDetails;
 import com.nextplay.nextplay.service.auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,15 +38,17 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
-
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        String jwt = jwtUtil.generateToken(userDetails.getUsername(), userDetails.getUser().getRole().getName());
-
-        return ResponseEntity.ok(new AuthResponse(jwt));
+    public ResponseEntity<?> login(@RequestBody AuthRequest request) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            );
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+            String jwt = jwtUtil.generateToken(userDetails.getUsername(), userDetails.getUser().getRole().getName());
+            return ResponseEntity.ok(new AuthResponse(jwt));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sai email hoặc mật khẩu");
+        }
     }
 
     @GetMapping("/oauth2/success")

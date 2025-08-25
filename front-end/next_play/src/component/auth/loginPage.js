@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import loginService from "../../service/auth/loginService";
 
 export default function LoginPage() {
   const [Email, setEmail] = useState("");
@@ -18,9 +19,9 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Username:", Email);
+    console.log("Email:", Email);
     console.log("Password:", password);
-    // TODO: Gọi API đăng nhập
+    loginService.login({Email, password })
   };
 
   const handleLoginWithFacebook = () => {
