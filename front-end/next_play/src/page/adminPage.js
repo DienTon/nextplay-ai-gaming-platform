@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaBars, FaTimes, FaChartLine, FaGamepad, FaComments, FaUsers, FaCog } from "react-icons/fa";
-import GameManager from "../component/admin/gameManage";
+import GameManager from "../component/admin/games/gameManage";
 import { Link } from "react-router-dom";
 
 

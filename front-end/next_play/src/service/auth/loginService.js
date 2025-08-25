@@ -17,6 +17,24 @@ const login = async (credentials) => {
   }
 };
 
+const logout = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    await axios.post("http://localhost:8080/api/auth/logout", null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("role");
+  } catch (error) {
+    console.error("Error logging out:", error);
+    throw error;
+  }
+};
+
 export default {
   login,
+  logout
 };

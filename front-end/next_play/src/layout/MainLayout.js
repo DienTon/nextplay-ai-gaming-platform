@@ -7,10 +7,10 @@ import { useLocation } from "react-router-dom";
 
 const MainLayout = ({ children }) => {
   const location = useLocation();
-  const hideNavbar = location.pathname.startsWith("/admin");
+  // const hideNavbar = location.pathname.startsWith("/admin");
   return (
     <>
-    {!hideNavbar && <Navbar />}
+      <Navbar />
       <main>{children}</main>
 <Footer />
     </>

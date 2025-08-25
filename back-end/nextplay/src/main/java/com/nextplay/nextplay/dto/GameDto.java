@@ -3,6 +3,7 @@ package com.nextplay.nextplay.dto;
 import com.nextplay.nextplay.model.game_store.Game;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,10 +11,13 @@ public class GameDto {
     private long id;
     private String title;
     private double price;
-    private List<Long> longList;
+    private List<Long> genre;
     private String imageUrl;
     private LocalDate releaseDate;
     private String description;
+    public GameDto() {
+        this.genre = new ArrayList<>(); // Khởi tạo empty list
+    }
 
 
     public String getImageUrl() {
@@ -56,11 +60,11 @@ public class GameDto {
         this.price = price;
     }
 
-    public List<Long> getLongList() {
-        return longList;
+    public List<Long> getGenre() {
+        return genre;
     }
 
-    public void setLongList(List<Long> longList) {
-        this.longList = longList;
+    public void setGenre(List<Long> genre) {
+        this.genre = genre;
     }
 }

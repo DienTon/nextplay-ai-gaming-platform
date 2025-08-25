@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class GameManage {
     @Autowired
     private GameService gameService;
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<Void> addNewGame(@RequestBody GameDto dto){
         gameService.addNewGame(dto);
         return ResponseEntity.status(HttpStatus.OK).build();

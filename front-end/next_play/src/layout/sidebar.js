@@ -2,12 +2,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars, FaHome, FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import loginService from "../service/auth/loginService";
 
 export default function DropdownSidebar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const handleClickLogout = () => {
+    // Call logout function from auth service
+    loginService.logout();
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,9 +67,11 @@ export default function DropdownSidebar() {
           <li className="d-flex align-items-center p-2 hover-glow">
             <FaCog className="me-2" /> Settings
           </li>
-          <li className="d-flex align-items-center p-2 hover-glow">
-            <FaSignOutAlt className="me-2" /> Logout
-          </li>
+          <Link to="/auth/login" onClick={handleClickLogout} style={{ textDecoration: "none", color: "inherit" }}>
+            <li className="d-flex align-items-center p-2 hover-glow">
+              <FaSignOutAlt className="me-2" /> Logout
+            </li>
+          </Link>
         </ul>
       )}
     </div>

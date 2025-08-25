@@ -32,7 +32,7 @@ public class GameService implements IGameService {
     public Game addNewGame(GameDto dto) {
         Game game = new Game(dto.getTitle(),dto.getDescription(),dto.getPrice(),dto.getReleaseDate(), dto.getImageUrl());
         gameRepo.save(game);
-        for (Long genreId : dto.getLongList()) {
+        for (Long genreId : dto.getGenre()) {
             Genre genre = genreRepo.findById(genreId)
                     .orElseThrow(() -> new RuntimeException("Genre not found: " + genreId));
             gameGenreRepo.save(new GameGenre(game, genre));

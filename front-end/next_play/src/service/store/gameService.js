@@ -1,17 +1,11 @@
-import axios from "axios";
-// import ReactPaginate from 'react-paginate';
-
+import apiClient from "../../utils/apiClient";
 
 export const getAllGames = async (page = 0, size = 5) => {
   try {
-    const token = localStorage.getItem('token');
-    const res = await axios.get(`http://localhost:8080/api/page/games/`, {
+    const res = await apiClient.get(`http://localhost:8080/api/page/games/`, {
         params: {
           page,
           size,
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
         },
     });
     console.log(res);
@@ -21,23 +15,19 @@ export const getAllGames = async (page = 0, size = 5) => {
   }
 };
 
-export const addNewBlog = async (blog) => {
+export const addNewGame = async (game) => {
   try {
-      const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:8080/api/admin/games', {
-        name,
-        description,
-        genre
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const res = await apiClient.post('http://localhost:8080/api/admin/games', {
+        title: game.title,
+        description: game.description,
+        title: game.title,
+        genre: game.genre,
+        price: game.price,
+        image: game.imageUrl
       });
-      setMessage("Thêm game thành công!");
-      setName("");
-      setDescription("");
-      setGenre("");
+      return res.data;
     } catch (error) {
-      setMessage("Lỗi khi thêm game!");
-    }
+      console.error(error);
+      throw error;
+  }
 };

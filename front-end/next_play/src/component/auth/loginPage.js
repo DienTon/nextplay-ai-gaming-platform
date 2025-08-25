@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import loginService from "../../service/auth/loginService";
 
 export default function LoginPage() {
-  const [Email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -17,11 +17,39 @@ export default function LoginPage() {
   }
 }, [navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", Email);
-    console.log("Password:", password);
-    loginService.login({Email, password })
+    try {
+      console.log("email:", email);
+      console.log("Password:", password);
+      
+      const response = await loginService.login({ email, password });
+      
+      if (response && response.token) {
+        // Lưu token và thông tin user
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("email", response.email);
+        localStorage.setItem("role", response.role);
+        
+        console.log("Login successful:", response);
+        
+        // Chuyển hướng dựa trên role
+        if (response.role === "ADMIN") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      } else {
+        alert("Đăng nhập thất bại");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      if (error.response && error.response.status === 401) {
+        alert("Sai email hoặc mật khẩu");
+      } else {
+        alert("Lỗi kết nối server");
+      }
+    }
   };
 
   const handleLoginWithFacebook = () => {
@@ -41,7 +69,7 @@ export default function LoginPage() {
         <input
           type="text"
           placeholder="Email"
-          value={Email}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={styles.input}
           required

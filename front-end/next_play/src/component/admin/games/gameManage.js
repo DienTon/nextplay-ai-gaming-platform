@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import * as gameService from "../../service/store/gameService";
-import GameModal from "../../layout/gameModal";
+import { Link } from "react-router-dom";
+import * as gameService from "../../../service/store/gameService";
+import GameModal from "../../../layout/gameModal";
 
 const GameManager = () => {
   const [games, setGames] = useState([]);
@@ -31,6 +32,12 @@ const GameManager = () => {
           Game Management
         </h2>
 
+        <div className="mb-4 text-end">
+          <Link to="/admin/games/add" className="btn btn-success">
+            Add New Game
+          </Link>
+        </div>
+
         <div className="row g-4">
           {games.map((game, index) => (
             <div key={game.id || index} className="col-12 col-sm-6 col-lg-3">
@@ -44,9 +51,41 @@ const GameManager = () => {
                 <img src={game.imageUrl || "https://via.placeholder.com/300x180"} className="card-img-top" alt={game.title} style={{ height: "180px", objectFit: "cover" }} />
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title fw-bold">{game.title}</h5>
-                  <span className="badge mb-2" style={{ background: "#0dcaf0", width: "fit-content" }}>
-                    {game.gameGenres.map(g => g.genre.name).join(" | ")}
-                  </span>
+                  <div className="mb-2" style={{ minHeight: "40px", display: "flex", flexWrap: "wrap", alignItems: "center" }}>
+                    {game.gameGenres && game.gameGenres.length > 0 ? (
+                      game.gameGenres.slice(0, 2).map((g, idx) => (
+                        <span 
+                          key={idx} 
+                          className="badge me-1 mb-1" 
+                          style={{ 
+                            background: "#0dcaf0", 
+                            fontSize: "0.7rem",
+                            maxWidth: "80px",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                            display: "inline-block"
+                          }}
+                          title={g.genre.name} // Tooltip để xem tên đầy đủ
+                        >
+                          {g.genre.name}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="badge" style={{ background: "#6c757d", fontSize: "0.7rem" }}>
+                        No Genre
+                      </span>
+                    )}
+                    {game.gameGenres && game.gameGenres.length > 2 && (
+                      <span 
+                        className="badge mb-1" 
+                        style={{ background: "#6c757d", fontSize: "0.7rem" }}
+                        title={`${game.gameGenres.slice(2).map(g => g.genre.name).join(', ')}`}
+                      >
+                        ...
+                      </span>
+                    )}
+                  </div>
                   <p className="card-text" style={{ flexGrow: 1 }}>{game.description}</p>
                   <div className="d-flex justify-content-between align-items-center mt-2">
                     <span className="fw-bold text-info">${game.price}</span>
