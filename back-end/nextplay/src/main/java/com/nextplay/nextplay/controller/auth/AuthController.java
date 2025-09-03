@@ -73,10 +73,27 @@ public class AuthController {
 
     @GetMapping("/oauth2/success")
     public ResponseEntity<?> oauth2Success(Authentication authentication) {
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        final String jwt = jwtUtil.generateToken(userDetails.getUsername(), userDetails.getUser().getRole().getName());
-        return ResponseEntity.ok(new AuthResponse(jwt,userDetails.getUsername(),userDetails.getUser().getRole().getName()));
+        try {
 
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+            // Debug thông tin user
+            System.out.println("User authenticated: " + userDetails.getUsername());
+            System.out.println("User role: " + userDetails.getUser().getRole().getName());
+
+            // Sử dụng email thay vì username để tạo token
+            String jwt = jwtUtil.generateToken(userDetails.getUsername(), userDetails.getUser().getRole().getName());
+
+            System.out.println("Generated JWT: " + jwt);
+
+            return ResponseEntity.ok(new AuthResponse(jwt,userDetails.getUsername(),userDetails.getUser().getRole().getName()));
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Sai email hoặc mật khẩu");
+        } catch (Exception e) {
+            System.err.println("Login error: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Lỗi đăng nhập");
+        }
     }
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {

@@ -11,7 +11,7 @@ const redirectToLogin = () => {
 
 // Tạo axios instance với cấu hình chung
 const apiClient = axios.create({
-  baseURL: '',
+  baseURL: 'http://localhost:8080',
   timeout: 10000, // 10 giây timeout
 });
 

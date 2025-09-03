@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faTrash,
+  faRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import DropdownSidebar from "../layout/sidebar";
 import "../css/home/homePageStyle.css";
 
@@ -11,11 +15,36 @@ const Navbar = () => {
     { id: 1, title: "Cyberpunk 2077", price: "$29.99" },
     { id: 2, title: "Elden Ring", price: "$59.99" },
   ]);
+  
+  // Lấy thông tin user từ localStorage
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const email = localStorage.getItem("email");
+  
+  // Kiểm tra user đã đăng nhập chưa
+  const isLoggedIn = !!token;
+
+  
+  const navigate = useNavigate();
 
   const toggleCart = () => setCartOpen(!cartOpen);
 
   const removeItem = (id) => {
     setCartItems(cartItems.filter((item) => item.id !== id));
+  };
+  const handleLoginClick = () => {
+    navigate("/auth/login");
+  };
+
+  const handleLogout = () => {
+    // Xóa thông tin user
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("email");
+    
+    // Chuyển về trang chủ
+    navigate("/");
+    window.location.reload(); // Reload để cập nhật navbar
   };
 
   return (
@@ -100,7 +129,7 @@ const Navbar = () => {
                     className="d-flex justify-content-between align-items-center mb-2 "
                   >
                     <div className="text-white">{item.title}</div>
-                    <div className="d-flex align-items-center " >
+                    <div className="d-flex align-items-center ">
                       <span className="text-info me-2">{item.price}</span>
                       <button
                         className="btn btn-sm btn-danger"
@@ -120,7 +149,31 @@ const Navbar = () => {
             </div>
           )}
         </div>
-           <DropdownSidebar />
+        
+        <div className="position-relative">
+          {!isLoggedIn ? (
+            // Hiển thị nút Login nếu chưa đăng nhập
+            <button
+              className="btn position-relative"
+              onClick={handleLoginClick}
+              style={{
+                marginLeft: "10px",
+                width: "40px",
+                height: "40px",
+                borderRadius: "8px",
+                background: "linear-gradient(180deg, #0f172a, #253449ff)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+              }}
+            >
+              <FontAwesomeIcon icon={faRightToBracket} />
+            </button>
+          ) : (
+            <DropdownSidebar onLogout={handleLogout} />
+          )}
+        </div>
       </div>
     </nav>
   );

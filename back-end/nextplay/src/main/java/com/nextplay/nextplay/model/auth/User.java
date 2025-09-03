@@ -1,5 +1,6 @@
 package com.nextplay.nextplay.model.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nextplay.nextplay.model.game_store.Cart;
 import com.nextplay.nextplay.model.game_store.Order;
 import jakarta.persistence.*;
@@ -42,6 +43,7 @@ public class User {
     private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Cart> cartItems = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

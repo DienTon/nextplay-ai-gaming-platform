@@ -43,6 +43,7 @@ public class Game {
     private List<OrderDetail> orderItems = new ArrayList<>();
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Cart> cartItems = new ArrayList<>();
 
     public Game() {

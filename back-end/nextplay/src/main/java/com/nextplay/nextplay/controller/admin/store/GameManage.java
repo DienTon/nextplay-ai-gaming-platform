@@ -1,6 +1,6 @@
 package com.nextplay.nextplay.controller.admin.store;
 
-import com.nextplay.nextplay.dto.GameDto;
+import com.nextplay.nextplay.dto.store.GameDto;
 import com.nextplay.nextplay.service.store.game.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

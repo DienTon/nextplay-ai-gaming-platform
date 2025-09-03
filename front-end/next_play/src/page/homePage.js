@@ -16,16 +16,11 @@ import { useLocation } from "react-router-dom";
 
 function HomePage() {
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
 
-  const token = params.get("token");
-  const email = params.get("email");
-  const role = params.get("role");
+  const token = localStorage.getItem("token");
+  const email = localStorage.getItem("email");
+  const role = localStorage.getItem("role");
 
-  localStorage.setItem("token", token);
-  localStorage.setItem("role", role);
-  localStorage.setItem("email", email);
   console.log("Token:", token);
   console.log("Email:", email);
   console.log("Role:", role);

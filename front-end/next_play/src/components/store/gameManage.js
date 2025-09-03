@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import * as gameService from "../../../service/store/gameService";
-import GameModal from "../../../layout/gameModal";
+import * as gameService from "../../service/store/gameService";
+import GameModal from "../../layout/gameModal";
 
 const GameManager = () => {
   const [games, setGames] = useState([]);

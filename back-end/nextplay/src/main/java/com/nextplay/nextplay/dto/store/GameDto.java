@@ -1,4 +1,4 @@
-package com.nextplay.nextplay.dto;
+package com.nextplay.nextplay.dto.store;
 
 import com.nextplay.nextplay.model.game_store.Game;
 

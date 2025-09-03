@@ -7,8 +7,11 @@ import MainLayout from "./layout/MainLayout";
 import ListGamePage from './component/store/listGamePage';
 import AdminPage from './page/adminPage';
 import RegisterPage from './component/auth/registerPage';
-import  AddNewGame  from './component/admin/games/addNewGame';
+import  AddNewGame  from './components/store/addNewGame';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProtectedRoute from './components/ProtectedRoute';
+import AuthCallback from './components/auth/AuthCallBack';
+import CartPage from './components/store/cartPage';
 
 
 function App() {
@@ -16,11 +19,35 @@ function App() {
     <BrowserRouter>
     <MainLayout>
       <Routes>
-        <Route path="/" element={<HomePage />} /> {/* Trang chủ */}
-        <Route path="/auth/login" element={<LoginPage />} /> {/* Trang đăng nhập */}
+        {/* Trang công khai */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth/login" element={<LoginPage />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/cart" element={<CartPage />} />
+
+        {/* Trang chỉ dành cho ADMIN */}
+        <Route 
+          path="/admin/*" 
+          element={
+            <ProtectedRoute requiredRole="ADMIN">
+              <AdminPage />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* Trang cần đăng nhập (USER hoặc ADMIN) */}
+        {/* <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          } 
+        /> */}
+        
+        <Route path="/home" element={<HomePage />} /> {/* Trang chủ */}
         <Route path="/auth/register" element={<RegisterPage />} /> {/* Trang đăng ký */}  
         <Route path="/games/list" element={<ListGamePage />} /> {/* Trang danh sách game */}
-        <Route path="/admin" element={<AdminPage />} /> {/* Trang quản trị viên */}
         {/* admin */}
         <Route path="/admin/games/add" element={<AddNewGame />} /> {/* Thêm game mới */}
       </Routes>

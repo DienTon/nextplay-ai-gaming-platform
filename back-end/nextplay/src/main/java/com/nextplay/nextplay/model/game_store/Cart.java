@@ -25,6 +25,15 @@ public class Cart {
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    public Cart(User user, Game game,Integer quantity) {
+        this.user = user;
+        this.game = game;
+        this.quantity = quantity;
+    }
+
+    public Cart() {
+    }
+
     // Getters and setters
     public Long getId() {
         return id;

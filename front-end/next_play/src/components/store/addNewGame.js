@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import { getAllGenre } from '../../../service/store/genreService';
-import { addNewGame } from '../../../service/store/gameService';
+import { getAllGenre } from '../../service/store/genreService';
+import { addNewGame } from '../../service/store/gameService';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 

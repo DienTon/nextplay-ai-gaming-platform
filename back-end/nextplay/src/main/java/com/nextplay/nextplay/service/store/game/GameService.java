@@ -1,6 +1,6 @@
 package com.nextplay.nextplay.service.store.game;
 
-import com.nextplay.nextplay.dto.GameDto;
+import com.nextplay.nextplay.dto.store.GameDto;
 import com.nextplay.nextplay.model.game_store.GameGenre;
 import com.nextplay.nextplay.model.game_store.Genre;
 import com.nextplay.nextplay.repository.store.IGameGenreRepo;
