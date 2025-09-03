@@ -1,13 +1,10 @@
 package com.nextplay.nextplay.dto.store;
 
-import com.nextplay.nextplay.model.game_store.Game;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class GameDto {
+public class GameDTO {
     private long id;
     private String title;
     private double price;
@@ -15,7 +12,7 @@ public class GameDto {
     private String imageUrl;
     private LocalDate releaseDate;
     private String description;
-    public GameDto() {
+    public GameDTO() {
         this.genre = new ArrayList<>(); // Khởi tạo empty list
     }
 

@@ -2,15 +2,19 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../css/layout/modal.css"; // Custom styles for the modal
+import userService from "../service/auth/userService";
+import { useCart } from "../context/CartContext";
 
 const GameModal = ({ show, onHide, game }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+  const email = localStorage.getItem("email");
 
   useEffect(() => {
     if (show) {
       setQuantity(1); // Reset quantity when modal opens
     }
-  }, [show]);
+  }, []);
 
   if (!game) return null;
 
@@ -20,11 +24,32 @@ const GameModal = ({ show, onHide, game }) => {
     }
   };
 
-  const handleAddToCart = () => {
-    // Add logic to add game to cart with selected quantity
-    console.log(`Adding ${quantity} copies of ${game.title} to cart`);
-    // You can add your cart logic here
-    onHide();
+  const handleAddToCart = async () => {
+    if (!email) {
+      alert("Please log in to add items to your cart.");
+      return;
+    }
+    
+    try {
+      const user = await userService.getUserByEmail(email);
+      if (user) {
+        const cartData = { 
+          idUser: user.id, 
+          idGame: game.id, 
+          quantity 
+        };
+        
+        const success = await addToCart(cartData);
+        if (success) {
+          onHide();
+        } else {
+          alert("Failed to add item to cart. Please try again.");
+        }
+      }
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   return (

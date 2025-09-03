@@ -1,6 +1,6 @@
 package com.nextplay.nextplay.controller.admin.store;
 
-import com.nextplay.nextplay.dto.store.GameDto;
+import com.nextplay.nextplay.dto.store.GameDTO;
 import com.nextplay.nextplay.service.store.game.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ public class GameManage {
     @Autowired
     private GameService gameService;
     @PostMapping()
-    public ResponseEntity<Void> addNewGame(@RequestBody GameDto dto){
+    public ResponseEntity<Void> addNewGame(@RequestBody GameDTO dto){
         gameService.addNewGame(dto);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

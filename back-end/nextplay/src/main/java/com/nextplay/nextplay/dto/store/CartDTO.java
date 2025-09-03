@@ -2,7 +2,7 @@ package com.nextplay.nextplay.dto.store;
 
 import java.time.LocalDateTime;
 
-public class CartDto {
+public class CartDTO {
     Long id;
     Long idGame;
     Long idUser;

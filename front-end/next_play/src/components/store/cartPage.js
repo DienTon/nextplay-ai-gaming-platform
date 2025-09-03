@@ -1,51 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,Alert} from "react";
 import "../../css/home/homePageStyle.css";
+import CartService from "../../service/store/cartService";
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   useEffect(() => {
     // Load cart items from localStorage or API
     loadCartItems();
   }, []);
 
-  const loadCartItems = () => {
-    // For demo purposes, using sample data
-    // In real app, this would come from localStorage or API
-    const sampleCartItems = [
-      {
-        id: 1,
-        title: "Cyberpunk 2077",
-        imageUrl: "https://via.placeholder.com/80x60",
-        price: 59.99,
-        quantity: 1,
-        genres: ["Action", "RPG"],
-        description: "An open-world, action-adventure story set in Night City"
-      },
-      {
-        id: 2,
-        title: "The Witcher 3",
-        imageUrl: "https://via.placeholder.com/80x60",
-        price: 39.99,
-        quantity: 2,
-        genres: ["RPG", "Adventure"],
-        description: "A story-driven open world RPG set in a visually stunning fantasy universe"
-      },
-      {
-        id: 3,
-        title: "Red Dead Redemption 2",
-        imageUrl: "https://via.placeholder.com/80x60",
-        price: 49.99,
-        quantity: 1,
-        genres: ["Action", "Adventure"],
-        description: "An epic tale of life in America's unforgiving heartland"
-      }
-    ];
-    setCartItems(sampleCartItems);
+  const loadCartItems = async () => {
+    try {
+      const items = await CartService.getAllCartItems();
+      setCartItems(items);
+    } catch (error) {
+      console.error("Error loading cart items:", error);
+    }
   };
 
   const removeFromCart = (gameId) => {
+    CartService.removeFromCart(gameId);
     setCartItems(cartItems.filter(item => item.id !== gameId));
+    setShowDeleteModal(false);
+    setItemToDelete(null);
+    alert("Item removed from cart" );
+  };
+
+  const handleDeleteClick = (item) => {
+    setItemToDelete(item);
+    setShowDeleteModal(true);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+    setItemToDelete(null);
   };
 
   const updateQuantity = (gameId, newQuantity) => {
@@ -59,7 +50,7 @@ function CartPage() {
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return cartItems.reduce((total, item) => total + (item.game.price * item.quantity), 0);
   };
 
   return (
@@ -120,8 +111,8 @@ function CartPage() {
                         <td style={{ border: "none", padding: "20px" }}>
                           <div className="d-flex align-items-center">
                             <img
-                              src={item.imageUrl || "https://via.placeholder.com/80x60"}
-                              alt={item.title}
+                              src={item.game.imageUrl || "https://via.placeholder.com/80x60"}
+                              alt={item.game.title}
                               style={{
                                 width: "80px",
                                 height: "60px",
@@ -131,7 +122,7 @@ function CartPage() {
                               }}
                             />
                             <div>
-                              <h6 className="fw-bold mb-1">{item.title}</h6>
+                              <h6 className="fw-bold mb-1">{item.game.title}</h6>
                               <span
                                 style={{
                                   background: "#0dcaf0",
@@ -142,14 +133,14 @@ function CartPage() {
                                   fontWeight: "bold",
                                 }}
                               >
-                                {item.genres?.join(" | ")}
+                                {item.game.gameGenres.map((g) => g.genre.name).join(" | ")}
                               </span>
                             </div>
                           </div>
                         </td>
                         <td style={{ border: "none", padding: "20px" }}>
                           <p style={{ margin: 0, fontSize: "0.9rem", color: "#cbd5e1" }}>
-                            {item.description?.substring(0, 80)}...
+                            {item.game.description?.substring(0, 80)}...
                           </p>
                         </td>
                         <td style={{ border: "none", padding: "20px", textAlign: "center" }}>
@@ -196,12 +187,12 @@ function CartPage() {
                         </td>
                         <td style={{ border: "none", padding: "20px", textAlign: "center" }}>
                           <span className="fw-bold" style={{ color: "#0dcaf0" }}>
-                            ${item.price}
+                            ${item.game.price}
                           </span>
                         </td>
                         <td style={{ border: "none", padding: "20px", textAlign: "center" }}>
                           <span className="fw-bold" style={{ color: "#0dcaf0" }}>
-                            ${(item.price * item.quantity).toFixed(2)}
+                            ${(item.game.price * item.quantity).toFixed(2)}
                           </span>
                         </td>
                         <td style={{ border: "none", padding: "20px", textAlign: "center" }}>
@@ -215,7 +206,7 @@ function CartPage() {
                               padding: "6px 12px",
                               transition: "0.3s"
                             }}
-                            onClick={() => removeFromCart(item.id)}
+                            onClick={() => handleDeleteClick(item)}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.background = "#c82333";
                             }}
@@ -310,6 +301,99 @@ function CartPage() {
           </>
         )}
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0, 0, 0, 0.7)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1050
+          }}
+          onClick={handleCancelDelete}
+        >
+          <div
+            style={{
+              background: "#1e293b",
+              borderRadius: "12px",
+              padding: "30px",
+              maxWidth: "400px",
+              width: "90%",
+              border: "1px solid #334155"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-center">
+              <div
+                style={{
+                  fontSize: "3rem",
+                  color: "#dc3545",
+                  marginBottom: "20px"
+                }}
+              >
+                🗑️
+              </div>
+              <h4 style={{ color: "#fff", marginBottom: "15px" }}>
+                Xác nhận xóa
+              </h4>
+              <p style={{ color: "#cbd5e1", marginBottom: "20px" }}>
+                Bạn có chắc chắn muốn xóa "{itemToDelete?.game?.title}" khỏi giỏ hàng?
+              </p>
+              <div className="d-flex gap-3 justify-content-center">
+                <button
+                  className="btn"
+                  style={{
+                    background: "transparent",
+                    color: "#6c757d",
+                    border: "1px solid #6c757d",
+                    padding: "10px 20px",
+                    borderRadius: "8px",
+                    transition: "0.3s"
+                  }}
+                  onClick={handleCancelDelete}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#6c757d";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.color = "#6c757d";
+                  }}
+                >
+                  Hủy
+                </button>
+                <button
+                  className="btn"
+                  style={{
+                    background: "#dc3545",
+                    color: "#fff",
+                    border: "none",
+                    padding: "10px 20px",
+                    borderRadius: "8px",
+                    transition: "0.3s"
+                  }}
+                  onClick={() => removeFromCart(itemToDelete.id)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#c82333";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "#dc3545";
+                  }}
+                >
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

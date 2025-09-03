@@ -1,6 +1,6 @@
 package com.nextplay.nextplay.service.store.game;
 
-import com.nextplay.nextplay.dto.store.GameDto;
+import com.nextplay.nextplay.dto.store.GameDTO;
 import com.nextplay.nextplay.model.game_store.GameGenre;
 import com.nextplay.nextplay.model.game_store.Genre;
 import com.nextplay.nextplay.repository.store.IGameGenreRepo;
@@ -29,7 +29,7 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public Game addNewGame(GameDto dto) {
+    public Game addNewGame(GameDTO dto) {
         Game game = new Game(dto.getTitle(),dto.getDescription(),dto.getPrice(),dto.getReleaseDate(), dto.getImageUrl());
         gameRepo.save(game);
         for (Long genreId : dto.getGenre()) {
@@ -46,7 +46,7 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public Game updateGame(GameDto dto) {
+    public Game updateGame(GameDTO dto) {
         Game game = new Game(dto.getTitle(),dto.getDescription(),dto.getPrice(),dto.getReleaseDate(), dto.getImageUrl());
 
         return null;

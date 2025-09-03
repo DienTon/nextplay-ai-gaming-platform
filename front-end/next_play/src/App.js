@@ -12,47 +12,50 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthCallback from './components/auth/AuthCallBack';
 import CartPage from './components/store/cartPage';
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
   return (
-    <BrowserRouter>
-    <MainLayout>
-      <Routes>
-        {/* Trang công khai */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth/login" element={<LoginPage />} />
-        <Route path="/auth/callback" element={<AuthCallback />} />
-        <Route path="/cart" element={<CartPage />} />
+    <CartProvider>
+      <BrowserRouter>
+        <MainLayout>
+          <Routes>
+            {/* Trang công khai */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/auth/login" element={<LoginPage />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/cart" element={<CartPage />} />
 
-        {/* Trang chỉ dành cho ADMIN */}
-        <Route 
-          path="/admin" 
-          element={
-            <ProtectedRoute requiredRole="ADMIN">
-              <AdminPage />
-            </ProtectedRoute>
-          } 
-        />
-        
-        {/* Trang cần đăng nhập (USER hoặc ADMIN) */}
-        {/* <Route 
-          path="/profile" 
-          element={
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          } 
-        /> */}
-        
-        <Route path="/home" element={<HomePage />} /> {/* Trang chủ */}
-        <Route path="/auth/register" element={<RegisterPage />} /> {/* Trang đăng ký */}  
-        <Route path="/games/list" element={<ListGamePage />} /> {/* Trang danh sách game */}
-        {/* admin */}
-        <Route path="/admin/games/add" element={<AddNewGame />} /> {/* Thêm game mới */}
-      </Routes>
-      </MainLayout>
-    </BrowserRouter>
+            {/* Trang chỉ dành cho ADMIN */}
+            <Route 
+              path="/admin" 
+              element={
+                <ProtectedRoute requiredRole="ADMIN">
+                  <AdminPage />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Trang cần đăng nhập (USER hoặc ADMIN) */}
+            {/* <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              } 
+            /> */}
+            
+            <Route path="/home" element={<HomePage />} /> {/* Trang chủ */}
+            <Route path="/auth/register" element={<RegisterPage />} /> {/* Trang đăng ký */}  
+            <Route path="/games/list" element={<ListGamePage />} /> {/* Trang danh sách game */}
+            {/* admin */}
+            <Route path="/admin/games/add" element={<AddNewGame />} /> {/* Thêm game mới */}
+          </Routes>
+        </MainLayout>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

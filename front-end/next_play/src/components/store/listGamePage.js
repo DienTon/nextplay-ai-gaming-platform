@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../css/home/homePageStyle.css";
 import * as gameService from "../../service/store/gameService";
 import GameModal from "../../layout/gameModal";
-
+import * as CartService from "../../service/store/cartService";
 function ListGamePage() {
   const [games, setGames] = useState([]);
   const [pageSize, setPageSize] = useState(8);
@@ -30,6 +30,11 @@ function ListGamePage() {
   const openModal = (game) => {
     setSelectedGame(game);
     setShowModal(true);
+  };
+
+  const addItemToCart = (game) => {
+    CartService.addToCart(game);
+    alert("Item added to cart");
   };
 
   const categories = [

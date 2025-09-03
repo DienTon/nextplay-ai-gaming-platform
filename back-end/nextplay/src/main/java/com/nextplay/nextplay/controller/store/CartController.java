@@ -1,20 +1,11 @@
 package com.nextplay.nextplay.controller.store;
 
-import com.nextplay.nextplay.dto.store.CartDto;
-import com.nextplay.nextplay.dto.store.GameDto;
+import com.nextplay.nextplay.dto.store.CartDTO;
 import com.nextplay.nextplay.model.game_store.Cart;
-import com.nextplay.nextplay.model.game_store.Game;
-import com.nextplay.nextplay.service.store.cart.CartService;
 import com.nextplay.nextplay.service.store.cart.ICartService;
-import com.nextplay.nextplay.service.store.game.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +24,14 @@ public class CartController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Void> addNewCart(@RequestBody CartDto dto){
+    public ResponseEntity<Void> addNewCart(@RequestBody CartDTO dto){
         cartService.addNewItem(dto);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @DeleteMapping("/")
+    public ResponseEntity<Void> delete(@RequestParam Long id){
+        cartService.deleteItemById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

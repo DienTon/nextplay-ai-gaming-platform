@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -8,14 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DropdownSidebar from "../layout/sidebar";
 import "../css/home/homePageStyle.css";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([
-    { id: 1, title: "Cyberpunk 2077", price: "$29.99" },
-    { id: 2, title: "Elden Ring", price: "$59.99" },
-  ]);
-  
+  const { cartItems, cartCount, removeFromCart, loadCartItems } = useCart();
+  const location = useLocation();
+
   // Lấy thông tin user từ localStorage
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
@@ -23,14 +22,22 @@ const Navbar = () => {
   
   // Kiểm tra user đã đăng nhập chưa
   const isLoggedIn = !!token;
-
   
+  // Kiểm tra có phải đang ở trang cart không
+  const isCartPage = location.pathname === '/cart';
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      loadCartItems();
+    }
+  }, []);
+
   const navigate = useNavigate();
 
   const toggleCart = () => setCartOpen(!cartOpen);
 
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
+  const handleRemoveItem = async (id) => {
+    await removeFromCart(id);
   };
   const handleLoginClick = () => {
     navigate("/auth/login");
@@ -86,69 +93,71 @@ const Navbar = () => {
         </form>
 
         {/* Cart dropdown */}
-        <div className="position-relative">
-          <button
-            className="btn position-relative "
-            onClick={toggleCart}
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "8px",
-              background: "linear-gradient(180deg, #0f172a, #253449ff)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#fff",
-            }}
-          >
-            <FontAwesomeIcon icon={faCartShopping} />
-            {cartItems.length > 0 && (
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                {cartItems.length}
-              </span>
-            )}
-          </button>
-
-          {cartOpen && (
-            <div
-              className="dropdown-menu dropdown-menu-end show p-3"
+        {!isCartPage && (
+          <div className="position-relative">
+            <button
+              className="btn position-relative "
+              onClick={toggleCart}
               style={{
-                minWidth: "250px",
-                right: 0,
+                width: "40px",
+                height: "40px",
                 borderRadius: "8px",
-                background: "linear-gradient(180deg, #0f172a, #293a54ff)",
-                borderRadius: "8px",
+                background: "linear-gradient(180deg, #0f172a, #253449ff)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
               }}
             >
-              {cartItems.length === 0 ? (
-                <p className="text-white mb-0">Your cart is empty</p>
-              ) : (
-                cartItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="d-flex justify-content-between align-items-center mb-2 "
-                  >
-                    <div className="text-white">{item.title}</div>
-                    <div className="d-flex align-items-center ">
-                      <span className="text-info me-2">{item.price}</span>
-                      <button
-                        className="btn btn-sm btn-danger"
-                        onClick={() => removeItem(item.id)}
-                      >
-                        <FontAwesomeIcon icon={faTrash} />
-                      </button>
-                    </div>
-                  </div>
-                ))
+              <FontAwesomeIcon icon={faCartShopping} />
+              {cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                  {cartCount}
+                </span>
               )}
-              <div className="mt-2">
-                <Link to="/cart" className="btn btn-primary w-100">
-                  Go to Checkout
-                </Link>
+            </button>
+
+            {cartOpen && (
+              <div
+                className="dropdown-menu dropdown-menu-end show p-3"
+                style={{
+                  minWidth: "250px",
+                  right: 0,
+                  borderRadius: "8px",
+                  background: "linear-gradient(180deg, #0f172a, #293a54ff)",
+                  borderRadius: "8px",
+                }}
+              >
+                {cartItems.length === 0 ? (
+                  <p className="text-white mb-0">Your cart is empty</p>
+                ) : (
+                  cartItems.map((item) => (
+                    <div
+                      key={item.id}
+                      className="d-flex justify-content-between align-items-center mb-2 "
+                    >
+                      <div className="text-white">{item.game.title}</div>
+                      <div className="d-flex align-items-center ">
+                        <span className="text-info me-2">{item.game.price}</span> 
+                        <button
+                          className="btn btn-sm btn-danger"
+                          onClick={() => handleRemoveItem(item.id)}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
+                <div className="mt-2">
+                  <Link to="/cart" className="btn btn-primary w-100">
+                    Go to Checkout
+                  </Link>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
         
         <div className="position-relative">
           {!isLoggedIn ? (
