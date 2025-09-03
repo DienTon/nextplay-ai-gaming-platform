@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css'; // hoặc './App.css' nếu bạn để Tailwind ở đó
 import HomePage from './page/homePage'; // Nếu có trang chủ
-import LoginPage from './component/auth/loginPage'; // Trang đăng nhập
+import LoginPage from './components/auth/loginPage'; // Trang đăng nhập
 import MainLayout from "./layout/MainLayout";
-import ListGamePage from './component/store/listGamePage';
+import ListGamePage from './components/store/listGamePage';
 import AdminPage from './page/adminPage';
-import RegisterPage from './component/auth/registerPage';
-import  AddNewGame  from './components/store/addNewGame';
+import RegisterPage from './components/auth/registerPage';
+import AddNewGame from './components/store/addNewGame';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import AuthCallback from './components/auth/AuthCallBack';
 import CartPage from './components/store/cartPage';
 
@@ -27,7 +27,7 @@ function App() {
 
         {/* Trang chỉ dành cho ADMIN */}
         <Route 
-          path="/admin/*" 
+          path="/admin" 
           element={
             <ProtectedRoute requiredRole="ADMIN">
               <AdminPage />
