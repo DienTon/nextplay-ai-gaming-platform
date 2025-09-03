@@ -6,7 +6,7 @@ import com.nextplay.nextplay.model.game_store.Cart;
 import java.util.List;
 
 public interface ICartService {
-    List<Cart> getALLCart();
+    List<Cart> getALLCart(String email);
     Cart addNewItem(CartDTO cart);
     void deleteItemById(Long id);
 }

@@ -27,9 +27,7 @@ const Navbar = () => {
   const isCartPage = location.pathname === '/cart';
 
   useEffect(() => {
-    if (isLoggedIn) {
       loadCartItems();
-    }
   }, []);
 
   const navigate = useNavigate();
@@ -45,10 +43,10 @@ const Navbar = () => {
 
   const handleLogout = () => {
     // Xóa thông tin user
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    localStorage.removeItem("email");
-    
+    localStorage.setItem("token", "");
+    localStorage.setItem("role", "");
+    localStorage.setItem("email", "");
+
     // Chuyển về trang chủ
     navigate("/");
     window.location.reload(); // Reload để cập nhật navbar

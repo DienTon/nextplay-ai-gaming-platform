@@ -25,9 +25,9 @@ const logout = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    localStorage.removeItem("role");
+    localStorage.setItem("token", "");
+    localStorage.setItem("role", "");
+    localStorage.setItem("email", "");
   } catch (error) {
     console.error("Error logging out:", error);
     throw error;

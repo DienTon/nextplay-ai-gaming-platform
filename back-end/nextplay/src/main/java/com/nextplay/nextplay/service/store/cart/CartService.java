@@ -21,8 +21,8 @@ public class CartService implements ICartService{
     @Autowired
     IGameRepo gameRepo;
     @Override
-    public List<Cart> getALLCart() {
-        return cartRepo.findAll();
+    public List<Cart> getALLCart(String email) {
+        return cartRepo.getAllByUserEmail(email);
     }
 
     @Override

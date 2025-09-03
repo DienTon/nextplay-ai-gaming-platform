@@ -13,6 +13,11 @@ export default function DropdownSidebar() {
   const handleClickLogout = () => {
     // Call logout function from auth service
     loginService.logout();
+    localStorage.setItem("token", "");
+    localStorage.setItem("role", "");
+    localStorage.setItem("email", "");
+    alert("Logged out successfully");
+    window.location.reload(); // Redirect to login page after logout
   };
 
   useEffect(() => {
@@ -67,11 +72,11 @@ export default function DropdownSidebar() {
           <li className="d-flex align-items-center p-2 hover-glow">
             <FaCog className="me-2" /> Settings
           </li>
-          <Link to="/auth/login" onClick={handleClickLogout} style={{ textDecoration: "none", color: "inherit" }}>
+          <div onClick={handleClickLogout} style={{ textDecoration: "none", color: "inherit" }}>
             <li className="d-flex align-items-center p-2 hover-glow">
               <FaSignOutAlt className="me-2" /> Logout
             </li>
-          </Link>
+          </div>
         </ul>
       )}
     </div>

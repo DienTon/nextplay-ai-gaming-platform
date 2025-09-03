@@ -18,8 +18,8 @@ public class CartController {
     ICartService cartService;
 
     @GetMapping("/")
-    public ResponseEntity<List<Cart>> getListCart() {
-        List<Cart> carts = cartService.getALLCart();
+    public ResponseEntity<List<Cart>> getListCart(@RequestParam String email) {
+        List<Cart> carts = cartService.getALLCart(email);
         return ResponseEntity.ok(carts);
     }
 

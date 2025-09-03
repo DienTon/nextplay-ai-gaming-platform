@@ -1,8 +1,10 @@
 import apiClient from "../../utils/apiClient";
 
+const email = localStorage.getItem("email");
+
 export const getAllCartItems = async () => {
   try {
-    const response = await apiClient.get("/api/page/cart/");
+    const response = await apiClient.get(`/api/page/cart/?email=${email}`);
     return response.data;
   } catch (error) {
     throw new Error("Error fetching cart items");

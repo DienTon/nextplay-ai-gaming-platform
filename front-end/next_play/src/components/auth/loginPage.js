@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { href, Link, useNavigate } from "react-router-dom";
 import loginService from "../../service/auth/loginService";
+import { Link2 } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -34,11 +35,7 @@ export default function LoginPage() {
         console.log("Login successful:", response);
         
         // Chuyển hướng dựa trên role
-        if (response.role === "ADMIN") {
-          navigate("/admin");
-        } else {
-          navigate("/");
-        }
+        window.location.href = "/";
       } else {
         alert("Đăng nhập thất bại");
       }
