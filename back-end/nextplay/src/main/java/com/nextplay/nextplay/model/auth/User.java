@@ -1,10 +1,7 @@
 package com.nextplay.nextplay.model.auth;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,6 +23,8 @@ public class User {
 
     @Column()
     private String provider;
+    @Column()
+    private Integer balance = 1000000;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -35,7 +34,8 @@ public class User {
     private Role role;
 
     // Các quan hệ 1-N khác
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<GameHistory> gameHistories;
 
     public User(String email,String username){
         this.role = new Role("USER");
@@ -43,6 +43,22 @@ public class User {
 
     public User() {
 
+    }
+
+    public List<GameHistory> getGameHistories() {
+        return gameHistories;
+    }
+
+    public void setGameHistories(List<GameHistory> gameHistories) {
+        this.gameHistories = gameHistories;
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 
     // Getters and setters
