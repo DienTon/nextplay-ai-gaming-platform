@@ -2,45 +2,94 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee63ea0d-8a38-409b-8b89-43b04068be8c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/NextplayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/NextplayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/JwtUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/OAuth2SuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/auth/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/GameDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/GameDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/auth/AuthRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/auth/AuthResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/CustomUserDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/GameGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/GameGenre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/auth/IUserRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameGenreRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameGenreRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGenreRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGenreRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/auth/CustomUserDetailsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/auth/IUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/auth/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/GameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/IGameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/IGameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nextplay/src/test/java/com/nextplay/nextplay/NextplayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/test/java/com/nextplay/nextplay/NextplayApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/back-end.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/admin/store/GameManage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/auth/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/auth/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/CartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/GameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/controller/store/GenreController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/store/CartDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/dto/store/GameDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/auth/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Report.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/forum/Tag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/GameGenre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Genre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/model/game_store/OrderDetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/ICartRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameGenreRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGameRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/repository/store/IGenreRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/cart/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/cart/ICartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/GameService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/game/IGameService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/genre/GenreService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nextplay/src/main/java/com/nextplay/nextplay/service/store/genre/IGenreService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/component/admin/games/addNewGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/component/admin/games/gameManage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/component/auth/ProtectedRoute.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/component/auth/loginPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/component/auth/registerPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/ProtectedRoute.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/auth/AuthCallBack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/auth/ProtectedRoute.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/auth/loginPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/auth/registerPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/common/Alert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/store/addNewGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/store/cartPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/store/gameManage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/components/store/listGamePage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/context/CartContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/css/auth/loginPageStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/css/games/games.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/css/home/homePageStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/css/layout/modal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/css/layout/navbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/css/layout/sidebar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/hooks/useAlert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/hooks/useAuth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/layout/MainLayout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/layout/footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/layout/gameModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/layout/navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/layout/sidebar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/page/adminPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/page/homePage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/service/auth/loginService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/service/auth/registerService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/service/auth/userService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/service/store/cartService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/service/store/gameService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/service/store/genreService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/next_play/src/utils/apiClient.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +114,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "login-google",
     "kotlin-language-version-configured": "true",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
@@ -93,6 +142,7 @@
       <workItem from="1755690461558" duration="97000" />
       <workItem from="1755690580811" duration="54000" />
       <workItem from="1755690666410" duration="198000" />
+      <workItem from="1757072859468" duration="82000" />
     </task>
     <servers />
   </component>

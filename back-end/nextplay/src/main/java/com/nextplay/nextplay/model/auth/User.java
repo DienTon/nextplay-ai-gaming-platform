@@ -1,16 +1,12 @@
 package com.nextplay.nextplay.model.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nextplay.nextplay.model.game_store.Cart;
-import com.nextplay.nextplay.model.game_store.Order;
+
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nextplay.nextplay.model.forum.Comment;
-import com.nextplay.nextplay.model.forum.Post;
-import com.nextplay.nextplay.model.forum.Report;
 
 @Entity
 @Table(name = "users")
@@ -39,21 +35,7 @@ public class User {
     private Role role;
 
     // Các quan hệ 1-N khác
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    private List<Cart> cartItems = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Report> reports = new ArrayList<>();
 
     public User(String email,String username){
         this.role = new Role("USER");
@@ -87,20 +69,6 @@ public class User {
         this.role = role;
     }
 
-    public List<Order> getOrders() { return orders; }
-    public void setOrders(List<Order> orders) { this.orders = orders; }
-
-    public List<Cart> getCartItems() { return cartItems; }
-    public void setCartItems(List<Cart> cartItems) { this.cartItems = cartItems; }
-
-    public List<Post> getPosts() { return posts; }
-    public void setPosts(List<Post> posts) { this.posts = posts; }
-
-    public List<Comment> getComments() { return comments; }
-    public void setComments(List<Comment> comments) { this.comments = comments; }
-
-    public List<Report> getReports() { return reports; }
-    public void setReports(List<Report> reports) { this.reports = reports; }
 
     public String getProvider() {
         return provider;

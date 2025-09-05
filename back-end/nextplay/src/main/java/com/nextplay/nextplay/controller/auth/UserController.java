@@ -1,7 +1,6 @@
 package com.nextplay.nextplay.controller.auth;
 
 import com.nextplay.nextplay.model.auth.User;
-import com.nextplay.nextplay.model.game_store.Cart;
 import com.nextplay.nextplay.service.auth.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
